@@ -1,13 +1,18 @@
 import { user } from './SampleData';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SessionSetup from './pages/SessionSetup/SessionSetup';
 import { Container } from './components/styled/Container';
 
 function App() {
-  const [userData, setUserData] = useState(user);
+  const [userData, setUserData] = useState('');
+
+  useEffect(() => {
+    setUserData(user);
+  }, [user]);
+
   return (
     <Container>
-      <SessionSetup />
+      {userData && <SessionSetup session={userData.session} />}
     </Container>
   );
 }

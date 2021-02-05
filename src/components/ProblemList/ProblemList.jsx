@@ -1,5 +1,5 @@
-const ProblemList = () => {
-  return ( <>Problem Table</> );
+const ProblemList = ({rounds}) => {
+  return ( <></> );
 }
  
 export default ProblemList;

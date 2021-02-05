@@ -1,6 +1,6 @@
-import ProblemTable from '../../components/ProblemTable/ProblemTable';
+import ProblemList from '../../components/ProblemList/ProblemList';
 
-const SessionSetup = () => {
+const SessionSetup = ({ session }) => {
   return (
     <>
       <h1>Session Setup</h1>
@@ -8,7 +8,8 @@ const SessionSetup = () => {
         Suggested problems based off of your onsight and limit grades. Feel free
         to adjust the grades and wall type for this session.
       </p>
-      <ProblemTable />
+      <h2>{session.date}</h2>
+      <ProblemList rounds={session.rounds} />
     </>
   );
 };
