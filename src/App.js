@@ -7,7 +7,6 @@ function App() {
   const [userData, setUserData] = useState(user);
   return (
     <Container>
-      {userData.name}
       <SessionSetup />
     </Container>
   );
