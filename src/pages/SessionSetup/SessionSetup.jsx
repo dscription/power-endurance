@@ -11,6 +11,8 @@ const SessionSetup = ({ session }) => {
       </p>
       <h2>{type}</h2>
       <ProblemList problems={initialProblems} />
+      {/* //TODO: Start Warmup Button changes a state variable, and calls on a function to build the Rounds which will be passed to the Warmup component. */}
+      {/* <button>Start Warmup</button> */}
     </>
   );
 };
