@@ -1,14 +1,15 @@
 import { user } from './SampleData';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SessionSetup from './pages/SessionSetup/SessionSetup';
+import { Container } from './components/styled/Container';
 
 function App() {
-  const [userData, setUserData] = useState(user)
+  const [userData, setUserData] = useState(user);
   return (
-    <div>
+    <Container>
       {userData.name}
       <SessionSetup />
-    </div>
+    </Container>
   );
 }
 
