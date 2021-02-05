@@ -8,6 +8,32 @@ export const user = {
   session: {
     date: '2/1/21',
     type: "Power Endurance",
+    initialProblems: [
+      {
+        grade: 4,
+        wall: "slab",
+      },
+      {
+        grade: 4,
+        wall: "slab",
+      },
+      {
+        grade: 4,
+        wall: "slab",
+      },
+      {
+        grade: 4,
+        wall: "slab",
+      },
+      {
+        grade: 4,
+        wall: "slab",
+      },
+      {
+        grade: 4,
+        wall: "slab",
+      },
+    ],
     rounds: [
       {
         number: 1,
