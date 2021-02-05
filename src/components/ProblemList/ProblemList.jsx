@@ -14,10 +14,11 @@ const Problem = styled.div`
 `;
 
 const ProblemList = ({ problems }) => {
+  
   return (
     <form>
       {problems.map((problem, idx) => (
-        <Problem key={idx}>
+        <Problem key={`problem${idx}`}>
           <SelectGrade grade={problem.grade} />
           <SelectWall wall={problem.wall} />
         </Problem>
