@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SessionSetup from './pages/SessionSetup/SessionSetup';
 import { Container } from './components/styled/Container';
 import Warmup from './pages/Warmup/Warmup';
+import ActiveSession from './pages/ActiveSession/ActiveSession';
 
 function App() {
   const [userData, setUserData] = useState('');
@@ -13,8 +14,9 @@ function App() {
 
   return (
     <Container>
-      {userData && <Warmup session={userData.session}/>}
+      {/* {userData && <Warmup session={userData.session}/>} */}
       {/* {userData && <SessionSetup session={userData.session} />} */}
+      {userData && <ActiveSession session={userData.session} />}
     </Container>
   );
 }
