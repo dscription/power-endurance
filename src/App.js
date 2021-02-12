@@ -13,6 +13,10 @@ import Onboarding from './pages/Onboarding/Onboarding';
 
 function App() {
   const [user, setUser] = useState('');
+  const [sessionSetup, setSessionSetup] = useState(true);
+  const [activeSession, setActiveSession] = useState(null);
+  const [initialSession, setInitialSession] = useState(null);
+  const [warmup, setWarmup] = useState(null);
 
   // useEffect(() => {
   //   setUserData(user);
@@ -25,7 +29,6 @@ function App() {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser());
-    // this.setState({ user: authService.getUser() });
   };
 
   return (
@@ -37,9 +40,24 @@ function App() {
         render={() => (
           <Container>
             {/* {!user.limit && <Onboarding user={user} />} */}
-            {/* {user && <Warmup session={userData.session}/>} */}
-            {user && <SessionSetup user={user} />}
-            {/* {user && <ActiveSession session={userData.session} />} */}
+            {user && warmup && (
+              <Warmup
+                session={initialSession}
+                setWarmup={setWarmup}
+                setActiveSession={setActiveSession}
+              />
+            )}
+            {user && sessionSetup && (
+              <SessionSetup
+                user={user}
+                setWarmup={setWarmup}
+                setSessionSetup={setSessionSetup}
+                setInitialSession={setInitialSession}
+              />
+            )}
+            {user && activeSession && (
+              <ActiveSession session={initialSession} />
+            )}
           </Container>
         )}
       />

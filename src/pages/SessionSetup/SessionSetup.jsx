@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProblemList from '../../components/ProblemList/ProblemList';
 
+// ! These functions will be moved serverside to build the initial session
 const buildSession = (limit, onsight) => {
   const warmup = buildWarmup(limit);
   const initialProblems = buildInitialProblems(onsight);
@@ -32,8 +33,19 @@ const buildInitialProblems = (onsight) => {
   return initialProblems;
 };
 
-const SessionSetup = ({ user }) => {
+const SessionSetup = ({
+  user,
+  setSessionSetup,
+  setWarmup,
+  setInitialSession,
+}) => {
   const [session, setSession] = useState(null);
+
+  const handleFlow = () => {
+    setSessionSetup(false);
+    setWarmup(true);
+    setInitialSession({ ...session });
+  };
 
   useEffect(() => {
     const session = buildSession(user.limit, user.onsight);
@@ -51,7 +63,7 @@ const SessionSetup = ({ user }) => {
         <h2>{session.type}</h2>
         <ProblemList problems={session.initialProblems} />
         {/* //TODO: Start Warmup Button changes a state variable, and calls on a function to build the Rounds which will be passed to the Warmup component. */}
-        {/* <button>Start Warmup</button> */}
+        <button onClick={handleFlow}>Start Warmup</button>
       </>
     )
   );
