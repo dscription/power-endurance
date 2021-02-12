@@ -7,8 +7,9 @@ import Warmup from './pages/Warmup/Warmup';
 import ActiveSession from './pages/ActiveSession/ActiveSession';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
-import NavBar from './components/NavBar/NavBar'
+import NavBar from './components/NavBar/NavBar';
 import authService from './services/authService';
+import Onboarding from './pages/Onboarding/Onboarding';
 
 function App() {
   const [user, setUser] = useState('');
@@ -19,11 +20,11 @@ function App() {
 
   const handleLogout = () => {
     authService.logout();
-    setUser({ user: null });
+    setUser(null);
   };
 
   const handleSignupOrLogin = () => {
-    setUser({ user: authService.getUser() });
+    setUser(authService.getUser());
     // this.setState({ user: authService.getUser() });
   };
 
@@ -35,6 +36,7 @@ function App() {
         path="/"
         render={() => (
           <Container>
+            {!user.limit && <Onboarding user={user} />}
             {/* {userData && <Warmup session={userData.session}/>} */}
             {/* {userData && <SessionSetup session={userData.session} />} */}
             {/* {userData && <ActiveSession session={userData.session} />} */}
