@@ -42,7 +42,7 @@ function App() {
             {/* {!user.limit && <Onboarding user={user} />} */}
             {user && warmup && (
               <Warmup
-                session={initialSession}
+                warmup={initialSession.warmup}
                 setWarmup={setWarmup}
                 setActiveSession={setActiveSession}
               />

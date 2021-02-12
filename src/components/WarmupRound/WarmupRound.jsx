@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Timer from 'react-compound-timer';
 
-const WarmupRound = () => {
+const WarmupRound = ({ round, setRoundIndex, setIsRest, setIsWork }) => {
   const [roundTime, setRoundTime] = useState(0);
+  const { grade, number, numberOfProblems } = round;
+
   return (
     <>
-      <h1>Warmup: Round 1 </h1>
+      <h1>Warmup: Round {number} </h1>
       <p>Climb 6 x v0 or v1 with minimal rest between climbs and click next.</p>
       {/* Timer counting up. */}
       <Timer
@@ -25,6 +27,8 @@ const WarmupRound = () => {
                 const time = getTime();
                 setRoundTime(time);
                 pause();
+                setIsWork(false);
+                setIsRest(true);
               }}
             >
               Next
