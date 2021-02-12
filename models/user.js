@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   limit: Number,
   onsight: Number,
+  
 }, {
   timestamps: true
 });

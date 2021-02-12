@@ -36,10 +36,10 @@ function App() {
         path="/"
         render={() => (
           <Container>
-            {!user.limit && <Onboarding user={user} />}
-            {/* {userData && <Warmup session={userData.session}/>} */}
-            {/* {userData && <SessionSetup session={userData.session} />} */}
-            {/* {userData && <ActiveSession session={userData.session} />} */}
+            {/* {!user.limit && <Onboarding user={user} />} */}
+            {/* {user && <Warmup session={userData.session}/>} */}
+            {user && <SessionSetup user={user} />}
+            {/* {user && <ActiveSession session={userData.session} />} */}
           </Container>
         )}
       />
