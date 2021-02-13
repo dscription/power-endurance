@@ -2,20 +2,10 @@ import React, { useState, useContext } from 'react';
 import Timer from 'react-compound-timer';
 import { SessionContext } from '../../contexts/SessionContext';
 
-const WarmupRound = () => {
+const WarmupRound = ({ round, incrementWarmupRoundIndex }) => {
   const [roundTime, setRoundTime] = useState(0);
-  const {
-    session,
-    warmupRoundIndex,
-    setWarmupRoundIndex,
-    setIsWork,
-    setIsRest,
-  } = useContext(SessionContext);
+  const { setIsWork, setIsRest } = useContext(SessionContext);
 
-  const { warmup } = session;
-  const { rounds } = warmup;
-
-  const round = rounds[warmupRoundIndex];
   const { number } = round;
 
   return (
@@ -42,7 +32,7 @@ const WarmupRound = () => {
                 pause();
                 setIsWork(false);
                 setIsRest(true);
-                setWarmupRoundIndex();
+                incrementWarmupRoundIndex();
               }}
             >
               Next

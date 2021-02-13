@@ -11,7 +11,6 @@ const SessionContextProvider = ({ children, user }) => {
   const [activeSession, setActiveSession] = useState(null);
   const [initialSession, setInitialSession] = useState(null);
   const [warmup, setWarmup] = useState(null);
-  const [warmupRoundIndex, setWarmupRoundIndex] = useState(0);
   const [isRest, setIsRest] = useState(null);
   const [isWork, setIsWork] = useState(true);
 
@@ -24,6 +23,8 @@ const SessionContextProvider = ({ children, user }) => {
     });
   }, []);
 
+  
+
   const updateProblems = async (sessionProblems) => {
     setProblems(sessionProblems);
   };
@@ -32,8 +33,6 @@ const SessionContextProvider = ({ children, user }) => {
     const updatedSession = { ...session };
     updatedSession.series = [...problems];
     const newSession = await sessionAPI.update(updatedSession);
-    // set response to state
-    // setSession(newSession);
   };
 
   // ! These functions will be moved serverside to build the initial session
@@ -67,9 +66,7 @@ const SessionContextProvider = ({ children, user }) => {
     return initialProblems;
   };
 
-  const incrementRoundIndex = () => {
-    setWarmupRoundIndex((prevRoundIndex) => prevRoundIndex + 1);
-  };
+  
 
   return (
     <SessionContext.Provider
@@ -83,14 +80,10 @@ const SessionContextProvider = ({ children, user }) => {
         sessionSetup,
         setSessionSetup,
         buildSession,
-        warmupRoundIndex,
-        setWarmupRoundIndex,
         isRest,
         setIsRest,
         isWork,
         setIsWork,
-        incrementRoundIndex,
-        // rounds,
         session,
         // setSession,
         updateProblems,
