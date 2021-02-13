@@ -8,13 +8,17 @@ const Warmup = () => {
   const [warmupRoundIndex, setWarmupRoundIndex] = useState(0);
   const { isWork, isRest, session } = useContext(SessionContext);
 
+  const { warmup } = session;
+  
+
   useEffect(() => {
-    const { warmup } = session;
     setWarmupRound(warmup.rounds[warmupRoundIndex]);
   }, [warmupRoundIndex]);
 
   const incrementWarmupRoundIndex = () => {
-    setWarmupRoundIndex((prevRoundIndex) => prevRoundIndex + 1);
+    warmupRoundIndex  < warmup.rounds.length
+      ? setWarmupRoundIndex((prevRoundIndex) => prevRoundIndex + 1)
+      : console.log('no more warmup');
   };
 
   return (
@@ -29,6 +33,7 @@ const Warmup = () => {
         <WarmupRest
           round={warmupRound}
           incrementWarmupRoundIndex={incrementWarmupRoundIndex}
+          warmupRoundIndex={warmupRoundIndex}
         />
       )}
     </>
