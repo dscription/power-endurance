@@ -2,6 +2,7 @@ import tokenService from '../services/tokenService';
 const BASE_URL = '/api/sessions/';
 
 export function create(session) {
+  console.log(session)
   return fetch(
     BASE_URL,
     {
