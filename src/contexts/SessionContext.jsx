@@ -4,16 +4,17 @@ import * as sessionAPI from '../services/sessionService';
 export const SessionContext = createContext();
 
 const SessionContextProvider = ({ children, user }) => {
-  const [sessionSetup, setSessionSetup] = useState(true);
   const [session, setSession] = useState('');
   const [problems, setProblems] = useState('');
 
+  const [sessionSetup, setSessionSetup] = useState(true);
   const [activeSession, setActiveSession] = useState(null);
   const [initialSession, setInitialSession] = useState(null);
   const [warmup, setWarmup] = useState(null);
-  const [roundIndex, setRoundIndex] = useState(0);
+  const [warmupRoundIndex, setWarmupRoundIndex] = useState(0);
   const [isRest, setIsRest] = useState(null);
   const [isWork, setIsWork] = useState(true);
+
   const { sessions } = user;
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const SessionContextProvider = ({ children, user }) => {
   };
 
   const incrementRoundIndex = () => {
-    setRoundIndex((prevRoundIndex) => prevRoundIndex + 1);
+    setWarmupRoundIndex((prevRoundIndex) => prevRoundIndex + 1);
   };
 
   return (
@@ -82,8 +83,8 @@ const SessionContextProvider = ({ children, user }) => {
         sessionSetup,
         setSessionSetup,
         buildSession,
-        roundIndex,
-        setRoundIndex,
+        warmupRoundIndex,
+        setWarmupRoundIndex,
         isRest,
         setIsRest,
         isWork,

@@ -33,12 +33,10 @@ function App() {
         exact
         path="/session"
         render={() =>
-          user.limit ? (
+          user && (
             <SessionContextProvider user={user}>
               <Session user={user} />
             </SessionContextProvider>
-          ) : (
-            <Onboarding user={user} />
           )
         }
       />

@@ -4,12 +4,19 @@ import { SessionContext } from '../../contexts/SessionContext';
 
 const WarmupRound = () => {
   const [roundTime, setRoundTime] = useState(0);
+  const {
+    session,
+    warmupRoundIndex,
+    setWarmupRoundIndex,
+    setIsWork,
+    setIsRest,
+  } = useContext(SessionContext);
 
-  const { setIsWork, setIsRest, setRoundIndex, round } = useContext(
-    SessionContext
-  );
+  const { warmup } = session;
+  const { rounds } = warmup;
 
-  const { grade, number, numberOfProblems } = round;
+  const round = rounds[warmupRoundIndex];
+  const { number } = round;
 
   return (
     <>
@@ -35,7 +42,7 @@ const WarmupRound = () => {
                 pause();
                 setIsWork(false);
                 setIsRest(true);
-                setRoundIndex();
+                setWarmupRoundIndex();
               }}
             >
               Next

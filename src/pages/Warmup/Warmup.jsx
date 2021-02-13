@@ -4,7 +4,11 @@ import WarmupRound from '../../components/WarmupRound/WarmupRound';
 import { SessionContext } from '../../contexts/SessionContext';
 
 const Warmup = () => {
-  const { isWork, isRest } = useContext(SessionContext);
+  const { isWork, isRest} = useContext(SessionContext);
+
+  
+
+
 
   return (
     <>
