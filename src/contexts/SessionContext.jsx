@@ -23,15 +23,16 @@ const SessionContextProvider = ({ children, user }) => {
     });
   }, []);
 
-  
-
   const updateProblems = async (sessionProblems) => {
     setProblems(sessionProblems);
   };
 
   const updateSession = async () => {
     const updatedSession = { ...session };
-    updatedSession.series = [...problems];
+    // updatedSession.series = [...problems];
+    const series = buildSeries();
+    updatedSession.series = series;
+    console.log(updatedSession)
     const newSession = await sessionAPI.update(updatedSession);
   };
 
@@ -66,7 +67,14 @@ const SessionContextProvider = ({ children, user }) => {
     return initialProblems;
   };
 
-  
+  const buildSeries = () => {
+    const series = [
+      { round: 1, problems: [...problems] },
+      { round: 2, problems: [...problems] },
+      { round: 3, problems: [...problems] },
+    ];
+    return series;
+  };
 
   return (
     <SessionContext.Provider

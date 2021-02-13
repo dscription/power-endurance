@@ -6,12 +6,12 @@ import ActiveSession from '../ActiveSession/ActiveSession';
 import { SessionContext } from '../../contexts/SessionContext';
 
 const Session = ({ user }) => {
-  const { warmup, sessionSetup, activeSession } = useContext(SessionContext);
+  const { warmup, sessionSetup, activeSession, session } = useContext(SessionContext);
   return (
     <Container>
       {user && sessionSetup && <SessionSetup user={user} />}
       {user && warmup && <Warmup />}
-      {user && activeSession && <ActiveSession />}
+      {user && activeSession && <ActiveSession series={session.series}/>}
     </Container>
   );
 };

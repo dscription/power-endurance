@@ -58,7 +58,7 @@ const WarmupRest = ({ round, warmupRoundIndex }) => {
       <>
         <p>Rest for your series</p>
         <Timer
-          initialTime={1000 * 60 * 4}
+          initialTime={1000}
           onPause={(value) => console.log(value)}
           formatValue={(value) => `${value < 10 ? `0${value}` : value}`}
           direction="backward"

@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ActiveSessionWork from '../../components/ActiveSessionWork/ActiveSessionWork';
+import { SessionContext } from '../../contexts/SessionContext';
 
-const ActiveSession = ({ session }) => {
-  const [roundIndex, setRoundIndex] = useState(0);
-  // const currentRound =
-  return (
-    <>{session && <ActiveSessionWork problems={session.initialProblems} />}</>
-  );
+const ActiveSession = ({ series }) => {
+  const [activeRoundIndex, setActiveRoundIndex] = useState(0);
+  const activeRound = series[activeRoundIndex]
+
+  return <>
+  {console.log(activeRound)}
+  {series && <ActiveSessionWork activeRound={activeRound} activeRoundIndex={activeRoundIndex} />}
+  </>;
 };
 
 export default ActiveSession;
