@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Timer from 'react-compound-timer';
+import { SessionContext } from '../../contexts/SessionContext';
 
-const WarmupRound = ({ round, setRoundIndex, setIsRest, setIsWork }) => {
+const WarmupRound = () => {
   const [roundTime, setRoundTime] = useState(0);
+
+  const { setIsWork, setIsRest, setRoundIndex, round } = useContext(
+    SessionContext
+  );
+
   const { grade, number, numberOfProblems } = round;
 
   return (
@@ -21,7 +27,7 @@ const WarmupRound = ({ round, setRoundIndex, setIsRest, setIsWork }) => {
               <Timer.Minutes /> :&nbsp;
               <Timer.Seconds />
             </p>
-            {/* //TODO: Onclick should set the state roundtime to total time elapsed, will be in miliseconds so make sure to translate accordingly if necessary. It should also reset the timer to 0 for the next round, should also change the value of the round state variable to move to a rest period or the next round.*/}
+            {/* // Todo: Onclick should set the state roundtime to total time elapsed, will be in miliseconds so make sure to translate accordingly if necessary. It should also reset the timer to 0 for the next round, should also change the value of the round state variable to move to a rest period or the next round.*/}
             <button
               onClick={() => {
                 const time = getTime();
@@ -29,6 +35,7 @@ const WarmupRound = ({ round, setRoundIndex, setIsRest, setIsWork }) => {
                 pause();
                 setIsWork(false);
                 setIsRest(true);
+                setRoundIndex();
               }}
             >
               Next

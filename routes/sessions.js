@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const usersCtrl = require('../controllers/users');
-
+const sessionsCtrl = require('../controllers/sessions')
 
 /*---------- Public Routes ----------*/
 
 /*---------- Protected Routes ----------*/
 router.use(require('../config/auth'));
-router.get('/', checkAuth, usersCtrl.index);
-router.put('/:id', checkAuth, usersCtrl.update);
+// router.get('/', checkAuth, sessionsCtrl.index);
+router.get('/',checkAuth, sessionsCtrl.getOne)
+router.post('/', checkAuth, sessionsCtrl.create)
 
 /*---------- Auth Checker ----------*/
 function checkAuth(req, res, next) {
