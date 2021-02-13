@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const SelectWall = ({ wall }) => {
+const SelectWall = ({ wall, updateSessionProblems, index }) => {
   const [value, setValue] = useState(wall);
 
+  useEffect(() => {
+    updateSessionProblems(value, index, 'wall');
+  }, [value]);
+
   const handleSelect = (event) => {
+    event.preventDefault();
     setValue(event.target.value);
   };
   return (

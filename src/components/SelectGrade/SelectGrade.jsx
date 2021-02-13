@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const SelectGrade = ({ grade }) => {
+const SelectGrade = ({ grade, updateSessionProblems, index }) => {
   const [value, setValue] = useState(grade);
 
+  useEffect(() => {
+    updateSessionProblems(value, index, 'grade');
+  }, [value]);
+
   const handleSelect = (event) => {
+    event.preventDefault();
     setValue(event.target.value);
   };
 

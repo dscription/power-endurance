@@ -5,7 +5,7 @@ import Warmup from '../Warmup/Warmup';
 import ActiveSession from '../ActiveSession/ActiveSession';
 import { SessionContext } from '../../contexts/SessionContext';
 
-const PowerEndurance = ({ user }) => {
+const Session = ({ user }) => {
   const { warmup, sessionSetup, activeSession } = useContext(SessionContext);
   return (
     <Container>
@@ -16,4 +16,4 @@ const PowerEndurance = ({ user }) => {
   );
 };
 
-export default PowerEndurance;
+export default Session;

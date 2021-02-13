@@ -7,8 +7,9 @@ const sessionsCtrl = require('../controllers/sessions')
 /*---------- Protected Routes ----------*/
 router.use(require('../config/auth'));
 // router.get('/', checkAuth, sessionsCtrl.index);
-router.get('/',checkAuth, sessionsCtrl.getOne)
+router.get('/:id',checkAuth, sessionsCtrl.getOne)
 router.post('/', checkAuth, sessionsCtrl.create)
+router.put('/:id', checkAuth, sessionsCtrl.update)
 
 /*---------- Auth Checker ----------*/
 function checkAuth(req, res, next) {

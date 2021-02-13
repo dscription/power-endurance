@@ -4,6 +4,7 @@ const User = require('../models/user');
 module.exports = {
   create,
   getOne,
+  update,
 };
 
 function create(req, res) {
@@ -20,4 +21,12 @@ function getOne(req, res) {
   Session.findById(req.params.id, (err, session) => {
     res.status(200).json(session);
   });
+}
+
+function update(req, res) {
+  Session.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
+    (session) => {
+      res.status(200).json(session);
+    }
+  );
 }

@@ -7,8 +7,8 @@ import NavBar from './components/NavBar/NavBar';
 import authService from './services/authService';
 import Onboarding from './pages/Onboarding/Onboarding';
 import SessionContextProvider from './contexts/SessionContext';
-import PowerEndurance from './pages/PowerEndurance/PowerEndurance';
 import Home from './pages/Home/Home';
+import Session from './pages/Session/Session';
 function App() {
   const [user, setUser] = useState('');
 
@@ -29,19 +29,19 @@ function App() {
         path="/"
         render={() => (user.limit ? <Home user={user} /> : <Onboarding />)}
       />
-      {/* <Route
+      <Route
         exact
-        path="/"
+        path="/session"
         render={() =>
           user.limit ? (
-            <SessionContextProvider>
-              <PowerEndurance user={user} />
+            <SessionContextProvider user={user}>
+              <Session user={user} />
             </SessionContextProvider>
           ) : (
             <Onboarding user={user} />
           )
         }
-      /> */}
+      />
       <Route
         exact
         path="/signup"

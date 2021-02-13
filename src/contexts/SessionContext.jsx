@@ -1,20 +1,39 @@
 import React, { useState, useEffect, createContext } from 'react';
+import * as sessionAPI from '../services/sessionService';
 
 export const SessionContext = createContext();
 
-const SessionContextProvider = ({ children }) => {
+const SessionContextProvider = ({ children, user }) => {
   const [sessionSetup, setSessionSetup] = useState(true);
-  // const [session, setSession] = useState('');
+  const [session, setSession] = useState('');
+  const [problems, setProblems] = useState('');
+
   const [activeSession, setActiveSession] = useState(null);
   const [initialSession, setInitialSession] = useState(null);
   const [warmup, setWarmup] = useState(null);
   const [roundIndex, setRoundIndex] = useState(0);
   const [isRest, setIsRest] = useState(null);
   const [isWork, setIsWork] = useState(true);
-  
+  const { sessions } = user;
 
-  // ! Variables
-   
+  useEffect(() => {
+    sessionAPI.getOne(sessions[0]).then((sessionData) => {
+      setSession(sessionData);
+      setProblems(sessionData.initialProblems);
+    });
+  }, []);
+
+  const updateProblems = async (sessionProblems) => {
+    setProblems(sessionProblems);
+  };
+
+  const updateSession = async () => {
+    const updatedSession = { ...session };
+    updatedSession.series = [...problems];
+    const newSession = await sessionAPI.update(updatedSession);
+    // set response to state
+    // setSession(newSession);
+  };
 
   // ! These functions will be moved serverside to build the initial session
   const buildSession = (limit, onsight) => {
@@ -71,8 +90,12 @@ const SessionContextProvider = ({ children }) => {
         setIsWork,
         incrementRoundIndex,
         // rounds,
-        // session,
+        session,
         // setSession,
+        updateProblems,
+        problems,
+        setProblems,
+        updateSession,
       }}
     >
       {children}

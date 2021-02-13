@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import * as sessionAPI from '../../services/sessionService'
+import { Link } from 'react-router-dom';
+import * as sessionAPI from '../../services/sessionService';
 
 const Home = ({ user }) => {
   // ! These functions will be moved serverside to build the initial session
@@ -34,15 +35,18 @@ const Home = ({ user }) => {
   };
 
   const handleStartSession = () => {
-    const session = buildSession(user.limit, user.onsight);
-    sessionAPI.create(session)
-    // todo: call service function to createSession, buildSession, and add to user model. Create Session will redirect me to the session component.
+    // ! Make sure to uncomment this, commenting out for now in order to prevent creating more session objects in the database.
+    console.log('creating session');
+    // const session = buildSession(user.limit, user.onsight);
+    // sessionAPI.create(session);
   };
 
   return (
     <>
       <h1>User Home</h1>
-      <button onClick={handleStartSession}>New Session</button>
+      <button onClick={handleStartSession}>
+        <Link to="/session">New Session</Link>
+      </button>
       <button>Stats</button>
     </>
   );
