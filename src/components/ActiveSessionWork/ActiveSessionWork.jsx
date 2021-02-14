@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Timer from 'react-compound-timer';
+import {Button, CircleRow, Circle} from '../styled/Components'
 
-const CircleRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-
-const Circle = styled.div`
-  border: 1px solid black;
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  /* align-items: center; */
-`;
 
 const ActiveSessionWork = ({ activeRound, activeRoundIndex }) => {
   const duration = 180000;

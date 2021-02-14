@@ -1,6 +1,7 @@
-import { user } from './SampleData';
-import { Route, Redirect } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import {Container} from './components/styled/Components'
+
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import NavBar from './components/NavBar/NavBar';
@@ -22,7 +23,7 @@ function App() {
   };
 
   return (
-    <>
+    <Container>
       <NavBar user={user} handleLogout={handleLogout} />
       <Route
         exact
@@ -54,7 +55,7 @@ function App() {
           <Login history={history} handleSignupOrLogin={handleSignupOrLogin} />
         )}
       />
-    </>
+    </Container>
   );
 }
 
