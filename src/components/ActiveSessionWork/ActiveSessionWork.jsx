@@ -31,7 +31,7 @@ const ActiveSessionWork = ({ activeRound, activeRoundIndex }) => {
       <CircleRow>
         {problems.map((problem, index) => (
           // todo: give circle a background color property and render correct color dependant on whether or not it is previous circle, current circle, or future circle. Should be a styled SFC.
-          <Circle>
+          <Circle key={index}>
             <p>V{problem.grade}</p>
           </Circle>
         ))}
@@ -44,6 +44,7 @@ const ActiveSessionWork = ({ activeRound, activeRoundIndex }) => {
         initialTime={duration}
         onPause={(value) => console.log(value)}
         formatValue={(value) => `${value < 10 ? `0${value}` : value}`}
+        // When timer hits zero call increment round function.
         direction="backward"
       >
         {({}) => (
@@ -55,7 +56,8 @@ const ActiveSessionWork = ({ activeRound, activeRoundIndex }) => {
           </>
         )}
       </Timer>
-      <button>Send</button>
+      {/* <button>Send</button> */}
+      <p>How did you do? I assume you succeeded, if not press the Fall button bellow.</p>
       <button>Fall</button>
     </>
   );
