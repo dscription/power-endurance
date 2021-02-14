@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import Timer from 'react-compound-timer';
 import { SessionContext } from '../../contexts/SessionContext';
+import {TimerBox} from '../styled/Components'
+
+import styled from 'styled-components';
 
 
 
@@ -22,10 +25,13 @@ const WarmupRound = ({ round, incrementWarmupRoundIndex }) => {
       >
         {({ state, pause, getTime }) => (
           <>
-            <p>
-              <Timer.Minutes /> :&nbsp;
-              <Timer.Seconds />
-            </p>
+            <TimerBox>
+              <p>
+                <Timer.Minutes /> :&nbsp;
+                <Timer.Seconds />
+              </p>
+            </TimerBox>
+
             {/* // Todo: Onclick should set the state roundtime to total time elapsed, will be in miliseconds so make sure to translate accordingly if necessary. It should also reset the timer to 0 for the next round, should also change the value of the round state variable to move to a rest period or the next round.*/}
             <button
               onClick={() => {

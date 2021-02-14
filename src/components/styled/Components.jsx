@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-
 // colors
-const green = '#1ACC3C'
-const blue = '#00AAFF'
-const red = '#FF004B'
-const darkBlue ='#2F4858'
-const purpleGrey = '#607999'
-
+// const green = '#1ACC3C'
+// const blue = '#00AAFF'
+// const red = '#FF004B'
+// const darkBlue ='#2F4858'
+// const purpleGrey = '#607999'
 
 export const Container = styled.main`
   display: flex;
@@ -19,7 +17,8 @@ export const Container = styled.main`
   min-height: 720px;
   max-width: 360px;
   margin: 0px auto;
-  background-color: #607999
+  background-color: #607999;
+  color: white;
   /* this main container should also account for mobile first sizing. */
 `;
 
@@ -41,4 +40,16 @@ export const Circle = styled.div`
   height: 50px;
   text-align: center;
   /* align-items: center; */
+`;
+
+export const TimerBox = styled.div`
+  border: 5px solid #1acc3c;
+  border-radius: 50px;
+  color: #1acc3c;
+  height: 40vh;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
 `;
