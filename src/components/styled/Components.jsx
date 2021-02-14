@@ -3,10 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   text-align: center;
+  align-items: center;
   padding: 0px 10px;
   min-height: 720px;
   max-width: 360px;
+  margin: 0px auto;
   /* this main container should also account for mobile first sizing. */
 `;
 
