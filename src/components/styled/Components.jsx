@@ -13,7 +13,11 @@ export const Container = styled.main`
   /* this main container should also account for mobile first sizing. */
 `;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+  background-color: ${(props) => props.bg};
+  color: ${(props) => props.text};
+`;
+
 export const CircleRow = styled.div`
   display: flex;
   flex-direction: row;

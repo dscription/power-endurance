@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ProblemList from '../../components/ProblemList/ProblemList';
 import { SessionContext } from '../../contexts/SessionContext';
+import { Button } from '../../components/styled/Components';
 
 const SessionSetup = ({ user }) => {
   const {
@@ -10,11 +11,11 @@ const SessionSetup = ({ user }) => {
     setSession,
     session,
     problems,
-    updateSession
+    updateSession,
   } = useContext(SessionContext);
 
   const handleFlow = () => {
-    updateSession()
+    updateSession();
     setSessionSetup(false);
     setWarmup(true);
     setInitialSession({ ...session });
@@ -29,8 +30,10 @@ const SessionSetup = ({ user }) => {
           free to adjust the grades and wall type for this session.
         </p>
         <h2>{session.type}</h2>
-        {problems && <ProblemList problems={problems}/>}
-        <button onClick={handleFlow}>Start Warmup</button>
+        {problems && <ProblemList problems={problems} />}
+        <Button bg="green" text="white" onClick={handleFlow}>
+          Start Warmup
+        </Button>
       </>
     )
   );
