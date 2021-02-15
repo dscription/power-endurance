@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Timer from 'react-compound-timer';
 import { SessionContext } from '../../contexts/SessionContext';
-import {TimerBox} from '../styled/Components'
+import {TimerBox, Button} from '../styled/Components'
 
 import styled from 'styled-components';
 
@@ -22,6 +22,7 @@ const WarmupRound = ({ round, incrementWarmupRoundIndex }) => {
         initialTime={1000}
         onPause={(value) => console.log(value)}
         formatValue={(value) => `${value < 10 ? `0${value}` : value}`}
+        // todo: when timer hits 3 minutes it should change the color to red as a warning
       >
         {({ state, pause, getTime }) => (
           <>
@@ -33,7 +34,7 @@ const WarmupRound = ({ round, incrementWarmupRoundIndex }) => {
             </TimerBox>
 
             {/* // Todo: Onclick should set the state roundtime to total time elapsed, will be in miliseconds so make sure to translate accordingly if necessary. It should also reset the timer to 0 for the next round, should also change the value of the round state variable to move to a rest period or the next round.*/}
-            <button
+            <Button text="white" bg="#1acc3c"
               onClick={() => {
                 const time = getTime();
                 setRoundTime(time);
@@ -44,7 +45,7 @@ const WarmupRound = ({ round, incrementWarmupRoundIndex }) => {
               }}
             >
               Next
-            </button>
+            </Button>
           </>
         )}
       </Timer>

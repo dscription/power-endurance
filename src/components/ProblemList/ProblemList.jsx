@@ -44,7 +44,7 @@ const ProblemList = ({ problems }) => {
     <form>
       {sessionProblems &&
         sessionProblems.map((problem, index) => (
-
+          // todo: Use css grid to create the correct table with inputs, html table tag should not be used for positioning.
           <Problem key={`problem${index}`}>
             <span>#{index + 1}</span>
             <SelectGrade

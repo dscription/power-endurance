@@ -38,28 +38,30 @@ export const Button = styled.button`
   border-radius: 10px;
   width: 150px;
   height: 50px;
+  font-size: 20px;
 `;
 
 export const CircleRow = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 `;
 
 export const Circle = styled.div`
-  border: 1px solid black;
+  border: 3px solid white;
   border-radius: 50px;
-  width: 50px;
-  height: 50px;
+  background-color: ${props => props.bg};
+  margin: 0px 5px;
+  width: 40px;
+  height: 40px;
   text-align: center;
-  /* align-items: center; */
+  
 `;
 
 export const TimerBox = styled.div`
-  border: 5px solid #1acc3c;
+  border: 10px solid #1acc3c;
   border-radius: 50px;
   color: #1acc3c;
-  height: 40vh;
+  height: 25vh;
   width: 80%;
   display: flex;
   justify-content: center;
@@ -78,5 +80,5 @@ export const SelectionBox = styled.button`
 
 export const Select = styled.select`
   width: 100px;
-  padding: 3px;
+  padding: 5px;
 `;

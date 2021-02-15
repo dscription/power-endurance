@@ -1,51 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Timer from 'react-compound-timer';
-import {Button, CircleRow, Circle} from '../styled/Components'
+import { Button, CircleRow, Circle } from '../styled/Components';
+import ProblemsIndicator from '../ProblemsIndicator/ProblemsIndicator';
+import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
+const ProblemCircle = styled.div`
+  border: 3px solid white;
+  border-radius: 100px;
+  margin: 0px auto;
+  background-color: ${(props) => props.bg};
+  width: 200px;
+  height: 200px;
+`;
 
 const ActiveSessionWork = ({ activeRound, activeRoundIndex }) => {
   const duration = 180000;
-  const {problems} = activeRound
+  const { problems } = activeRound;
 
   const currentProblem = problems[0];
   return (
     <>
-      <p>session #1/20</p>
-      <p>Previous Session Points: 50</p>
-      <p>Session Goal: 0/50pts</p>
-      <h1>Round {activeRoundIndex + 1}</h1>
-      <CircleRow>
-        {problems.map((problem, index) => (
-          // todo: give circle a background color property and render correct color dependant on whether or not it is previous circle, current circle, or future circle. Should be a styled SFC.
-          <Circle key={index}>
-            <p>V{problem.grade}</p>
-          </Circle>
-        ))}
-      </CircleRow>
-      <p>You have 3 minutes to complete the following problem and recover.</p>
-      <p>V{currentProblem.grade}</p>
-      <p>{currentProblem.wall}</p>
-      {/* // ! countdown timer */}
-      <Timer
-        initialTime={duration}
-        onPause={(value) => console.log(value)}
-        formatValue={(value) => `${value < 10 ? `0${value}` : value}`}
-        // When timer hits zero call increment round function.
-        direction="backward"
-      >
-        {({}) => (
-          <>
-            <p>
-              <Timer.Minutes /> :&nbsp;
-              <Timer.Seconds />
-            </p>
-          </>
-        )}
-      </Timer>
-      {/* <button>Send</button> */}
-      <p>How did you do? I assume you succeeded, if not press the Fall button bellow.</p>
-      <button>Fall</button>
+      <section>
+        <h1>Round {activeRoundIndex + 1} : 0/50pts</h1>
+        <ProblemsIndicator problems={problems} />
+        <p>You have 3 minutes to complete the following problem and recover.</p>
+        <ProblemCircle>
+          <p style={{ fontSize: '50px' }}>V{currentProblem.grade}</p>
+        </ProblemCircle>
+        <p style={{ fontSize: '35px' }}>{currentProblem.wall}</p>
+
+        <CountdownTimer duration={duration} />
+        {/* <button>Send</button> */}
+        <p>I assume you succeeded, if not press the Fall button.</p>
+        <Button bg="#FF004B">Fall</Button>
+      </section>
     </>
   );
 };
