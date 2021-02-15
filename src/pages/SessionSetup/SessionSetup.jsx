@@ -23,18 +23,22 @@ const SessionSetup = ({ user }) => {
 
   return (
     session && (
-      <>
-        <h1>Session Setup</h1>
-        <p>
-          Suggested problems based off of your onsight and limit grades. Feel
-          free to adjust the grades and wall type for this session.
-        </p>
-        <h2>{session.type}</h2>
-        {problems && <ProblemList problems={problems} />}
-        <Button bg="green" text="white" onClick={handleFlow}>
-          Start Warmup
-        </Button>
-      </>
+      <div style={{ padding: '10px' }}>
+        <section>
+          <h1>Session Setup</h1>
+          <p>
+            Suggested problems based off of your onsight and limit grades. Feel
+            free to adjust the grades and wall type for this session.
+          </p>
+        </section>
+        <section>
+          <h2>{session.type}</h2>
+          {problems && <ProblemList problems={problems} />}
+          <Button bg="#1ACC3C" text="white" onClick={handleFlow}>
+            Start Warmup
+          </Button>
+        </section>
+      </div>
     )
   );
 };

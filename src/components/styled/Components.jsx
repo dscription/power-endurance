@@ -21,20 +21,23 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  background-color: #607999;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
-  color: white;
+  background-color: #607999;
   height: 100%;
   width: 100%;
+  color: white;
 `;
 
 export const Button = styled.button`
   background-color: ${(props) => props.bg};
   color: ${(props) => props.text};
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
 `;
 
 export const CircleRow = styled.div`
@@ -62,4 +65,18 @@ export const TimerBox = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 50px;
+`;
+
+export const SelectionBox = styled.button`
+  width: 80%;
+  height: 100px;
+  border-radius: 25px;
+  color: white;
+  background-color: ${(props) => props.bg};
+  font-size: 30px;
+`;
+
+export const Select = styled.select`
+  width: 100px;
+  padding: 3px;
 `;

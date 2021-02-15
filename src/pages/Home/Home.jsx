@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as sessionAPI from '../../services/sessionService';
+import { SelectionBox } from '../../components/styled/Components';
+
+
 
 const Home = ({ user }) => {
   // ! These functions will be moved serverside to build the initial session
@@ -44,10 +47,10 @@ const Home = ({ user }) => {
   return (
     <>
       <h1>User Home</h1>
-      <button onClick={handleStartSession}>
+      <SelectionBox bg="#1ACC3C" onClick={handleStartSession}>
         <Link to="/session">New Session</Link>
-      </button>
-      <button>Stats</button>
+      </SelectionBox>
+      <SelectionBox bg="#00AAFF">Stats</SelectionBox>
     </>
   );
 };

@@ -7,7 +7,7 @@ import { SessionContext } from '../../contexts/SessionContext';
 const Problem = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const ProblemList = ({ problems }) => {
@@ -44,7 +44,9 @@ const ProblemList = ({ problems }) => {
     <form>
       {sessionProblems &&
         sessionProblems.map((problem, index) => (
+
           <Problem key={`problem${index}`}>
+            <span>#{index + 1}</span>
             <SelectGrade
               grade={problem.grade}
               index={index}
