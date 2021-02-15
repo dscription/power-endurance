@@ -7,19 +7,29 @@ import styled from 'styled-components';
 // const darkBlue ='#2F4858'
 // const purpleGrey = '#607999'
 
-export const Container = styled.main`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  align-items: center;
+  justify-content: center;
+  height: 720px;
+  width: 360px;
+  margin: 0px auto;
+  border: 5px solid red;
+
+  /* this main container should also account for mobile first sizing. */
+`;
+
+export const Main = styled.main`
+  background-color: #607999;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   align-items: center;
-  padding: 0px 10px;
-  min-height: 720px;
-  max-width: 360px;
-  margin: 0px auto;
-  background-color: #607999;
+  justify-content: center;
   color: white;
-  /* this main container should also account for mobile first sizing. */
+  height: 100%;
+  width: 100%;
 `;
 
 export const Button = styled.button`
