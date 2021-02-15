@@ -1,19 +1,45 @@
+import React, { useState, useEffect, useContext } from 'react';
 import ProblemList from '../../components/ProblemList/ProblemList';
+import { SessionContext } from '../../contexts/SessionContext';
+import { Button } from '../../components/styled/Components';
 
-const SessionSetup = ({ session }) => {
-  const { date, rounds, type, initialProblems } = session;
+const SessionSetup = ({ user }) => {
+  const {
+    setSessionSetup,
+    setWarmup,
+    setInitialSession,
+    setSession,
+    session,
+    problems,
+    updateSession,
+  } = useContext(SessionContext);
+
+  const handleFlow = () => {
+    updateSession();
+    setSessionSetup(false);
+    setWarmup(true);
+    setInitialSession({ ...session });
+  };
+
   return (
-    <>
-      <h1>Session Setup</h1>
-      <p>
-        Suggested problems based off of your onsight and limit grades. Feel free
-        to adjust the grades and wall type for this session.
-      </p>
-      <h2>{type}</h2>
-      <ProblemList problems={initialProblems} />
-      {/* //TODO: Start Warmup Button changes a state variable, and calls on a function to build the Rounds which will be passed to the Warmup component. */}
-      {/* <button>Start Warmup</button> */}
-    </>
+    session && (
+      <div style={{ padding: '10px' }}>
+        <section>
+          <h1>Session Setup</h1>
+          <p>
+            Suggested problems based off of your onsight and limit grades. Feel
+            free to adjust the grades and wall type for this session.
+          </p>
+        </section>
+        <section>
+          <h2>{session.type}</h2>
+          {problems && <ProblemList problems={problems} />}
+          <Button bg="#1ACC3C" text="white" onClick={handleFlow}>
+            Start Warmup
+          </Button>
+        </section>
+      </div>
+    )
   );
 };
 

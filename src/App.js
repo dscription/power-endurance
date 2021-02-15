@@ -1,22 +1,70 @@
-import { user } from './SampleData';
-import React, { useState, useEffect } from 'react';
-import SessionSetup from './pages/SessionSetup/SessionSetup';
-import { Container } from './components/styled/Container';
-import Warmup from './pages/Warmup/Warmup';
-import ActiveSession from './pages/ActiveSession/ActiveSession';
+import React, { useState, useContext } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { Container, Main } from './components/styled/Components';
 
+import Signup from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
+import NavBar from './components/NavBar/NavBar';
+import authService from './services/authService';
+import Onboarding from './pages/Onboarding/Onboarding';
+import SessionContextProvider from './contexts/SessionContext';
+import Home from './pages/Home/Home';
+import Session from './pages/Session/Session';
 function App() {
-  const [userData, setUserData] = useState('');
+  const [user, setUser] = useState('');
 
-  useEffect(() => {
-    setUserData(user);
-  }, [user]);
+  const handleLogout = () => {
+    authService.logout();
+    setUser(null);
+  };
+
+  const handleSignupOrLogin = () => {
+    setUser(authService.getUser());
+  };
 
   return (
     <Container>
-      {/* {userData && <Warmup session={userData.session}/>} */}
-      {/* {userData && <SessionSetup session={userData.session} />} */}
-      {userData && <ActiveSession session={userData.session} />}
+      <NavBar user={user} handleLogout={handleLogout} />
+      <Main>
+        <Route
+          exact
+          path="/"
+          render={() =>
+            user.limit ? <Home user={user} /> : user && <Onboarding />
+          }
+        />
+        <Route
+          exact
+          path="/session"
+          render={() =>
+            user && (
+              <SessionContextProvider user={user}>
+                <Session user={user} />
+              </SessionContextProvider>
+            )
+          }
+        />
+        <Route
+          exact
+          path="/signup"
+          render={({ history }) => (
+            <Signup
+              history={history}
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/login"
+          render={({ history }) => (
+            <Login
+              history={history}
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+          )}
+        />
+      </Main>
     </Container>
   );
 }
